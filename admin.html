@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$PROGRAMMING — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/cascadia-code@latest/index.css">
+  <style>
+    :root {
+      --base: #1E1E2E;
+      --surface: #181825;
+      --green: #A6E3A1;
+      --mauve: #CBA6F7;
+      --peach: #FAB387;
+      --red: #F38BA8;
+      --comment: #6C7086;
+      --text: #CDD6F4;
+      --line-num: #45475A;
+      --font: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--base);
+      color: var(--text);
+      font-family: var(--font);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .admin-card {
+      width: min(460px, 100%);
+      background: var(--surface);
+      border: 1px solid var(--line-num);
+      border-radius: 8px;
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    h1 {
+      font-size: 18px;
+      color: var(--mauve);
+      text-align: center;
+      letter-spacing: 4px;
+    }
+    label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--comment);
+      display: block;
+      margin-bottom: 6px;
+    }
+    input {
+      width: 100%;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line-num);
+      border-radius: 4px;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus { border-color: var(--mauve); }
+    .field { display: flex; flex-direction: column; }
+    .btn {
+      font-family: var(--font);
+      font-size: 13px;
+      letter-spacing: 2px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+    }
+    .btn-login {
+      background: var(--mauve);
+      color: var(--base);
+    }
+    .btn-login:hover { opacity: 0.85; }
+    .btn-save {
+      background: var(--green);
+      color: var(--base);
+    }
+    .btn-save:hover { opacity: 0.85; }
+    .status {
+      font-size: 12px;
+      text-align: center;
+      min-height: 18px;
+    }
+    .status.ok { color: var(--green); }
+    .status.err { color: var(--red); }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="admin-card">
+    <h1>// ADMIN</h1>
+
+    <div id="loginSection">
+      <div class="field">
+        <label>// password</label>
+        <input type="password" id="adminPass" placeholder="enter admin password">
+      </div>
+      <button class="btn btn-login" id="loginBtn" style="margin-top:12px">LOGIN</button>
+    </div>
+
+    <div id="configSection" class="hidden">
+      <div class="field">
+        <label>// contract address</label>
+        <input type="text" id="cfgCA" placeholder="token CA">
+      </div>
+      <div class="field">
+        <label>// twitter url</label>
+        <input type="url" id="cfgTwitter" placeholder="https://x.com/...">
+      </div>
+      <div class="field">
+        <label>// community url</label>
+        <input type="url" id="cfgCommunity" placeholder="https://t.me/...">
+      </div>
+      <div class="field">
+        <label>// buy url</label>
+        <input type="url" id="cfgBuy" placeholder="https://...">
+      </div>
+      <button class="btn btn-save" id="saveBtn" style="margin-top:8px">SAVE CONFIG</button>
+    </div>
+
+    <div class="status" id="status"></div>
+  </div>
+
+  <script>
+    let passwordHash = '';
+
+    document.getElementById('loginBtn').addEventListener('click', login);
+    document.getElementById('adminPass').addEventListener('keydown', e => {
+      if (e.key === 'Enter') login();
+    });
+    document.getElementById('saveBtn').addEventListener('click', saveConfig);
+
+    fetch('/api/config')
+      .then(r => r.json())
+      .then(cfg => {
+        if (cfg.ca) document.getElementById('cfgCA').value = cfg.ca;
+        if (cfg.twitter) document.getElementById('cfgTwitter').value = cfg.twitter;
+        if (cfg.community) document.getElementById('cfgCommunity').value = cfg.community;
+        if (cfg.buy) document.getElementById('cfgBuy').value = cfg.buy;
+      })
+      .catch(() => {});
+
+    async function hashPassword(pass) {
+      const encoded = new TextEncoder().encode(pass);
+      const buffer = await crypto.subtle.digest('SHA-256', encoded);
+      return Array.from(new Uint8Array(buffer))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
+
+    async function login() {
+      const pass = document.getElementById('adminPass').value;
+      if (!pass) return;
+      passwordHash = await hashPassword(pass);
+      document.getElementById('loginSection').classList.add('hidden');
+      document.getElementById('configSection').classList.remove('hidden');
+      setStatus('logged in. edit config below.', 'ok');
+    }
+
+    async function saveConfig() {
+      const cfg = {
+        hash: passwordHash,
+        ca: document.getElementById('cfgCA').value.trim(),
+        twitter: document.getElementById('cfgTwitter').value.trim(),
+        community: document.getElementById('cfgCommunity').value.trim(),
+        buy: document.getElementById('cfgBuy').value.trim(),
+      };
+      try {
+        const res = await fetch('/api/config', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(cfg),
+        });
+        const data = await res.json();
+        if (res.ok && data.ok) {
+          setStatus('config saved.', 'ok');
+        } else {
+          setStatus(data.error || 'failed to save.', 'err');
+        }
+      } catch (e) {
+        setStatus('network error.', 'err');
+      }
+    }
+
+    function setStatus(msg, type) {
+      const el = document.getElementById('status');
+      el.textContent = msg;
+      el.className = 'status ' + (type || '');
+    }
+  </script>
+</body>
+</html>

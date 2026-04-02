@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$PROGRAMMING — Everything Is Programming</title>
+  <meta name="description" content="99% of the world is programmed. Open the source code. Change the program. Change your life. $PROGRAMMING">
+  <meta property="og:title" content="$PROGRAMMING — Everything Is Programming">
+  <meta property="og:description" content="99% of the world is programmed. You are the program.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#1E1E2E">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/cascadia-code@latest/index.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">// copied to clipboard</div>
+
+  <!-- Tab Bar -->
+  <nav class="tab-bar">
+    <div class="tab active">
+      <span class="tab-dot green"></span> index.life
+    </div>
+    <div class="tab">
+      <span class="tab-dot blue"></span> README.md
+    </div>
+    <div class="tab">
+      <span class="tab-dot peach"></span> config.sol
+    </div>
+    <div class="tab-bar-right">
+      <button class="ca-btn" id="caCopyBtn" title="Copy contract address">
+        <span id="caDisplay">CA</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      </button>
+      <a class="community-link" id="communityLink" href="#" target="_blank" rel="noopener" title="Community">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Line Numbers Gutter -->
+  <div class="gutter" id="gutter">
+    <div class="gutter-inner" id="gutterInner"></div>
+  </div>
+
+  <!-- Content -->
+  <main class="content" id="content">
+
+    <!-- SECTION 0: FILE HEADER (Hero) -->
+    <section class="hero" id="hero">
+      <div class="code-line hero-line"><span class="cmt">// ============================================</span></div>
+      <div class="code-line hero-line"><span class="cmt">// </span><span class="hero-title">EVERYTHING IS PROGRAMMING</span></div>
+      <div class="code-line hero-line"><span class="cmt">// ============================================</span></div>
+      <div class="code-line hero-line"><span class="cmt">//</span></div>
+      <div class="code-line hero-line"><span class="cmt">// author:  the system</span></div>
+      <div class="code-line hero-line"><span class="cmt">// version: life.0.0.1</span></div>
+      <div class="code-line hero-line"><span class="cmt">// license: you didn't agree to this</span></div>
+      <div class="code-line hero-line"><span class="cmt">//</span></div>
+      <div class="code-line hero-line empty"></div>
+      <div class="code-line hero-line"><span class="kw">const</span> <span class="fn">PROGRAMMING</span> <span class="tx">= {</span></div>
+      <div class="code-line hero-line">    <span class="tx">ticker:</span> <span class="str">"$PROGRAMMING"</span><span class="tx">,</span></div>
+      <div class="code-line hero-line">    <span class="tx">name:</span> <span class="str">"Everything Is Programming"</span><span class="tx">,</span></div>
+      <div class="code-line hero-line">    <span class="tx">truth:</span> <span class="str">"99% of the world is programmed"</span></div>
+      <div class="code-line hero-line"><span class="tx">};</span><span class="cursor-blink">&#9612;</span></div>
+
+      <div class="code-line empty"></div>
+
+      <div class="code-line console-log-line hero-line">
+        <span class="fn">console</span><span class="tx">.</span><span class="fn">log</span><span class="tx">(</span><span class="str">"you are the program. $PROGRAMMING"</span><span class="tx">);</span>
+      </div>
+
+      <div class="hero-buttons">
+        <a class="btn-run" id="buyBtn" href="#" target="_blank" rel="noopener">&#9654; Run</a>
+        <a class="btn-push" id="communityBtn" href="#" target="_blank" rel="noopener">&#11014; Push</a>
+      </div>
+    </section>
+
+    <!-- SECTION 1: THE SOURCE CODE -->
+    <section class="section" id="section1">
+      <div class="code-line section-header"><span class="cmt">// ---- WHAT PROGRAMS YOU ----</span></div>
+      <div class="code-line empty"></div>
+      <div class="code-line scroll-reveal diff-add"><span class="tx">habits</span><span class="tx">.</span><span class="fn">program</span><span class="tx">(</span><span class="tx">your</span><span class="tx">.</span><span class="str">life</span><span class="tx">);</span></div>
+      <div class="code-line scroll-reveal diff-add"><span class="tx">thoughts</span><span class="tx">.</span><span class="fn">program</span><span class="tx">(</span><span class="tx">your</span><span class="tx">.</span><span class="str">mindset</span><span class="tx">);</span></div>
+      <div class="code-line scroll-reveal diff-add"><span class="tx">friends</span><span class="tx">.</span><span class="fn">program</span><span class="tx">(</span><span class="tx">your</span><span class="tx">.</span><span class="str">behavior</span><span class="tx">);</span></div>
+      <div class="code-line scroll-reveal diff-add"><span class="tx">routine</span><span class="tx">.</span><span class="fn">program</span><span class="tx">(</span><span class="tx">your</span><span class="tx">.</span><span class="str">future</span><span class="tx">);</span></div>
+      <div class="code-line scroll-reveal diff-add"><span class="tx">media</span><span class="tx">.</span><span class="fn">program</span><span class="tx">(</span><span class="tx">your</span><span class="tx">.</span><span class="str">brain</span><span class="tx">);</span></div>
+      <div class="code-line empty"></div>
+      <div class="code-line scroll-reveal"><span class="str">// what you repeat becomes your identity</span></div>
+      <div class="code-line scroll-reveal"><span class="kw">while</span> <span class="tx">(</span><span class="str">repeat</span><span class="tx">) { </span><span class="fn">identity</span><span class="tx">.</span><span class="fn">update</span><span class="tx">(); }</span></div>
+    </section>
+
+    <!-- SECTION 2: THE SANDBOX -->
+    <section class="section sandbox" id="section2">
+      <div class="code-line scroll-seq"><span class="cmt">/**</span></div>
+      <div class="code-line scroll-seq"><span class="quote-main"> *  99% of the entire world is all programmed</span></div>
+      <div class="code-line scroll-seq"><span class="quote-main"> *  and set up. We are all in a giant sandbox</span></div>
+      <div class="code-line scroll-seq"><span class="quote-main"> *  getting pushed around.</span></div>
+      <div class="code-line scroll-seq"><span class="cmt"> *</span></div>
+      <div class="code-line scroll-seq"><span class="quote-key"> *  Change the program. Change your life.</span></div>
+      <div class="code-line scroll-seq"><span class="cmt"> */</span></div>
+    </section>
+
+    <!-- SECTION 3: RUNTIME ANALYSIS -->
+    <section class="section" id="section3">
+      <div class="code-line section-header"><span class="cmt">// ---- RUNTIME ANALYSIS ----</span></div>
+      <div class="code-line"><span class="cmt">// what's currently running on you</span></div>
+      <div class="code-line empty"></div>
+      <div class="code-line warn-line slide-in"><span class="warn-prefix">&#9888; WARN  </span><span class="process-name">social_media.exe</span><span class="process-desc">        &mdash; running 14h/day      </span><span class="severity critical">[CRITICAL]</span></div>
+      <div class="code-line warn-line slide-in"><span class="warn-prefix">&#9888; WARN  </span><span class="process-name">news_feed.exe</span><span class="process-desc">           &mdash; injecting fear        </span><span class="severity high">[HIGH]</span></div>
+      <div class="code-line warn-line slide-in"><span class="warn-prefix">&#9888; WARN  </span><span class="process-name">algorithm.exe</span><span class="process-desc">           &mdash; controlling choices   </span><span class="severity high">[HIGH]</span></div>
+      <div class="code-line warn-line slide-in"><span class="warn-prefix">&#9888; WARN  </span><span class="process-name">peer_pressure.dll</span><span class="process-desc">       &mdash; loaded since birth    </span><span class="severity embedded">[EMBEDDED]</span></div>
+      <div class="code-line warn-line slide-in"><span class="warn-prefix">&#9888; WARN  </span><span class="process-name">education_system.sys</span><span class="process-desc">    &mdash; outdated firmware     </span><span class="severity legacy">[LEGACY]</span></div>
+      <div class="code-line warn-line slide-in"><span class="warn-prefix">&#9888; WARN  </span><span class="process-name">consumer_culture.exe</span><span class="process-desc">    &mdash; draining resources    </span><span class="severity active">[ACTIVE]</span></div>
+    </section>
+
+    <!-- SECTION 4: OVERRIDE -->
+    <section class="section" id="section4">
+      <div class="code-line section-header"><span class="cmt">// ---- OVERRIDE PROTOCOL ----</span></div>
+      <div class="code-line"><span class="cmt">// to exit the sandbox, execute:</span></div>
+      <div class="code-line empty"></div>
+      <div class="code-line scroll-reveal"><span class="kw">function</span> <span class="fn">reprogramYourself</span><span class="tx">() {</span></div>
+      <div class="code-line scroll-reveal">    <span class="del">delete</span> <span class="tx">habits.</span><span class="str">destructive</span><span class="tx">;</span></div>
+      <div class="code-line scroll-reveal">    <span class="fn">install</span><span class="tx">(</span><span class="str">"awareness"</span><span class="tx">);</span></div>
+      <div class="code-line scroll-reveal">    <span class="fn">install</span><span class="tx">(</span><span class="str">"discipline"</span><span class="tx">);</span></div>
+      <div class="code-line scroll-reveal">    <span class="fn">install</span><span class="tx">(</span><span class="str">"sovereignty"</span><span class="tx">);</span></div>
+      <div class="code-line scroll-reveal">    <span class="fn">unsubscribe</span><span class="tx">(</span><span class="tx">mainstream.</span><span class="str">narrative</span><span class="tx">);</span></div>
+      <div class="code-line scroll-reveal">    <span class="kw">return</span> <span class="fn">freedom</span><span class="tx">;</span></div>
+      <div class="code-line scroll-reveal"><span class="tx">}</span></div>
+      <div class="code-line empty"></div>
+      <div class="code-line comment-step scroll-reveal"><span class="cmt">// step 1: get a wallet</span></div>
+      <div class="code-line comment-step scroll-reveal"><span class="cmt">// step 2: acquire SOL</span></div>
+      <div class="code-line comment-step scroll-reveal"><span class="cmt">// step 3: swap for $PROGRAMMING</span></div>
+      <div class="code-line comment-step scroll-reveal"><span class="cmt">// step 4: you just ran your first override</span></div>
+    </section>
+
+    <!-- SECTION 5: EXECUTION LOG -->
+    <section class="section" id="section5">
+      <div class="code-line section-header"><span class="cmt">// ---- EXECUTION LOG ----</span></div>
+      <div class="code-line empty"></div>
+      <div class="code-line typewriter-line"><span class="terminal-prefix">&gt; </span><span class="tx">program loaded: $PROGRAMMING</span></div>
+      <div class="code-line typewriter-line"><span class="terminal-prefix">&gt; </span><span class="tx">status: on-chain</span></div>
+      <div class="code-line typewriter-line"><span class="terminal-prefix">&gt; </span><span class="tx">participants: expanding</span></div>
+      <div class="code-line typewriter-line"><span class="terminal-prefix">&gt; </span><span class="tx">sandbox: exiting...</span></div>
+      <div class="code-line empty"></div>
+      <div class="code-line typewriter-line"><span class="cmt">// everything is programming.</span></div>
+      <div class="code-line typewriter-line last-line"><span class="cmt">// the question is: </span><span class="kw">who's writing your code?</span></div>
+    </section>
+
+    <div class="end-spacer"></div>
+  </main>
+
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <span class="status-item"><span class="kw">&#9095;</span> main</span>
+    <span class="status-sep">|</span>
+    <span class="status-item">UTF-8</span>
+    <span class="status-sep">|</span>
+    <span class="status-item" id="statusLn">Ln 1, Col 1</span>
+    <span class="status-sep">|</span>
+    <span class="status-item">Cascadia Code</span>
+    <span class="status-push"></span>
+    <span class="status-item status-ticker">$PROGRAMMING</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
