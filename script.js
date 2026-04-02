@@ -23,8 +23,6 @@
   function applyConfig() {
     const caEl = document.getElementById('caDisplay');
     const buyBtn = document.getElementById('buyBtn');
-    const communityBtn = document.getElementById('communityBtn');
-    const communityLink = document.getElementById('communityLink');
 
     if (CONFIG.ca && caEl) {
       caEl.textContent = CONFIG.ca.length > 12
@@ -32,13 +30,6 @@
         : CONFIG.ca;
     }
     if (CONFIG.buy && buyBtn) buyBtn.href = CONFIG.buy;
-    if (CONFIG.community) {
-      if (communityBtn) communityBtn.href = CONFIG.community;
-      if (communityLink) communityLink.href = CONFIG.community;
-    }
-    if (CONFIG.twitter) {
-      /* twitter link could be added if needed */
-    }
   }
 
   /* ---- CA COPY ---- */
