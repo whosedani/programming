@@ -122,8 +122,8 @@
         <input type="url" id="cfgTwitter" placeholder="https://x.com/...">
       </div>
       <div class="field">
-        <label>// community url</label>
-        <input type="url" id="cfgCommunity" placeholder="https://t.me/...">
+        <label>// search url</label>
+        <input type="url" id="cfgSearch" placeholder="https://...">
       </div>
       <div class="field">
         <label>// buy url</label>
@@ -149,7 +149,7 @@
       .then(cfg => {
         if (cfg.ca) document.getElementById('cfgCA').value = cfg.ca;
         if (cfg.twitter) document.getElementById('cfgTwitter').value = cfg.twitter;
-        if (cfg.community) document.getElementById('cfgCommunity').value = cfg.community;
+        if (cfg.search) document.getElementById('cfgSearch').value = cfg.search;
         if (cfg.buy) document.getElementById('cfgBuy').value = cfg.buy;
       })
       .catch(() => {});
@@ -176,7 +176,7 @@
         hash: passwordHash,
         ca: document.getElementById('cfgCA').value.trim(),
         twitter: document.getElementById('cfgTwitter').value.trim(),
-        community: document.getElementById('cfgCommunity').value.trim(),
+        search: document.getElementById('cfgSearch').value.trim(),
         buy: document.getElementById('cfgBuy').value.trim(),
       };
       try {

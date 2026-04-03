@@ -6,7 +6,7 @@
   'use strict';
 
   /* ---- CONFIG ---- */
-  const CONFIG = { ca: '', twitter: '', community: '', buy: '' };
+  const CONFIG = { ca: '', twitter: '', search: '', buy: '' };
 
   async function loadConfig() {
     try {
@@ -14,7 +14,7 @@
       const cfg = await res.json();
       if (cfg.ca) CONFIG.ca = cfg.ca;
       if (cfg.twitter) CONFIG.twitter = cfg.twitter;
-      if (cfg.community) CONFIG.community = cfg.community;
+      if (cfg.search) CONFIG.search = cfg.search;
       if (cfg.buy) CONFIG.buy = cfg.buy;
       applyConfig();
     } catch (e) { /* silent */ }
@@ -22,14 +22,18 @@
 
   function applyConfig() {
     const caEl = document.getElementById('caDisplay');
+    const consoleLogCA = document.getElementById('consoleLogCA');
     const buyBtn = document.getElementById('buyBtn');
+    const searchBtn = document.getElementById('searchBtn');
+    const twitterLink = document.getElementById('twitterLink');
 
-    if (CONFIG.ca && caEl) {
-      caEl.textContent = CONFIG.ca.length > 12
-        ? CONFIG.ca.slice(0, 6) + '...' + CONFIG.ca.slice(-4)
-        : CONFIG.ca;
+    if (CONFIG.ca) {
+      if (caEl) caEl.textContent = CONFIG.ca;
+      if (consoleLogCA) consoleLogCA.textContent = '"' + CONFIG.ca + '"';
     }
     if (CONFIG.buy && buyBtn) buyBtn.href = CONFIG.buy;
+    if (CONFIG.search && searchBtn) searchBtn.href = CONFIG.search;
+    if (CONFIG.twitter && twitterLink) twitterLink.href = CONFIG.twitter;
   }
 
   /* ---- CA COPY ---- */

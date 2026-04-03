@@ -21,13 +21,13 @@ module.exports = async (req, res) => {
 
   if (req.method === 'POST') {
     try {
-      const { hash, ca, twitter, community, buy } = req.body;
+      const { hash, ca, twitter, search, buy } = req.body;
 
       if (!ADMIN_HASH || hash !== ADMIN_HASH) {
         return res.status(401).json({ error: 'Unauthorized' });
       }
 
-      const config = { ca, twitter, community, buy };
+      const config = { ca, twitter, search, buy };
 
       await fetch(`${KV_REST_API_URL}`, {
         method: 'POST',
